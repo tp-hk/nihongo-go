@@ -1,13 +1,14 @@
-import { useState, useEffect } from 'react';
-import { QuestionList } from './question-list';
-import ButtonGroup from 'react-bootstrap/ButtonGroup';
-import Button from 'react-bootstrap/Button';
-import { vocabs } from './data';
+import { useState, useEffect } from "react";
+import { VocabList } from "./vocab-list";
+import ButtonGroup from "react-bootstrap/ButtonGroup";
+import Button from "react-bootstrap/Button";
+import { vocabs } from "./data";
+import "./container.css";
 
-const shuffle = (items) => items.sort((a, b) => 0.5 - Math.random());
+const shuffle = (items) => items.sort(() => 0.5 - Math.random());
 
 export const Container = () => {
-  const [langText, setLangText] = useState('EN');
+  const [langText, setLangText] = useState("EN");
   const [shuffledVocabs, setVocabs] = useState([]);
 
   useEffect(() => {
@@ -16,7 +17,7 @@ export const Container = () => {
   }, []);
 
   const handleSwitchLanguage = () => {
-    setLangText(langText === 'EN' ? 'JA' : 'EN');
+    setLangText(langText === "EN" ? "JA" : "EN");
     handleRestart();
   };
 
@@ -32,7 +33,7 @@ export const Container = () => {
         <Button onClick={handleSwitchLanguage}>{langText}</Button>
         <Button onClick={handleRestart}>Restart</Button>
       </ButtonGroup>
-      <QuestionList vocabs={shuffledVocabs} isShowJa={langText === 'EN'} />
+      <VocabList vocabs={shuffledVocabs} isShowJa={langText} />
     </div>
   );
 };

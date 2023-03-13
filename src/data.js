@@ -1,176 +1,176 @@
 // TODO: expand to hiragana & katakana
 // TODO: expand to accept multiple answers
+// TODO: add id
 export const vocabs = [
   // sec 1
   {
-    ja: 'わたし',
-    en: 'I'
+    ja: "わたし",
+    en: "I",
   },
   {
-    ja: 'あなた',
-    en: 'you'
+    ja: "あなた",
+    en: "you",
   },
   {
-    ja: 'さん',
-    en: 'Mr'
+    ja: "さん",
+    en: "Mr",
   },
   {
-    ja: 'にほん',
-    en: 'Japan'
+    ja: "にほん",
+    en: "Japan",
   },
   {
-    ja: 'ちゅうごく',
-    en: 'China'
+    ja: "ちゅうごく",
+    en: "China",
   },
   // sec 2
   {
-    ja: 'いいえ',
-    en: 'no'
+    ja: "いいえ",
+    en: "no",
   },
   {
-    ja: 'おなじ',
-    en: 'same'
+    ja: "おなじ",
+    en: "same",
   },
   {
-    ja: 'かいしゃ',
-    en: 'company'
+    ja: "かいしゃ",
+    en: "company",
   },
   {
-    ja: 'しごと',
-    en: 'work'
+    ja: "しごと",
+    en: "work",
   },
   {
-    ja: 'しりょう',
-    en: 'materials'
+    ja: "しりょう",
+    en: "materials",
   },
   {
-    ja: 'ざっし',
-    en: 'magazine'
+    ja: "ざっし",
+    en: "magazine",
   },
   {
-    ja: 'しんぶん',
-    en: 'newspaper'
+    ja: "しんぶん",
+    en: "newspaper",
   },
   {
-    ja: 'しゃしん',
-    en: 'photo'
+    ja: "しゃしん",
+    en: "photo",
   },
   {
-    ja: 'かさ',
-    en: 'umbrella'
+    ja: "かさ",
+    en: "umbrella",
   },
   {
-    ja: 'かばん',
-    en: 'bag'
+    ja: "かばん",
+    en: "bag",
   },
   {
-    ja: 'あした',
-    en: 'tomorrow'
+    ja: "あした",
+    en: "tomorrow",
   },
   {
-    ja: 'どうぞ',
-    en: 'please'
+    ja: "どうぞ",
+    en: "please",
   },
   {
-    ja: 'はいる',
-    en: 'enter'
+    ja: "はいる",
+    en: "enter",
   },
   {
-    ja: 'おちゃ',
-    en: 'tea'
+    ja: "おちゃ",
+    en: "tea",
   },
   {
-    ja: 'みず',
-    en: 'water'
+    ja: "みず",
+    en: "water",
   },
 
   {
-    ja: 'こうちゃ',
-    en: 'black tea'
+    ja: "こうちゃ",
+    en: "black tea",
   },
   {
-    ja: 'ジュース',
-    en: 'juice'
+    ja: "ジュース",
+    en: "juice",
   },
   {
-    ja: 'ひと',
-    en: 'people'
+    ja: "ひと",
+    en: "people",
   },
   {
-    ja: 'はは',
-    en: 'mom'
+    ja: "はは",
+    en: "mom",
   },
   {
-    ja: 'おかあさん',
-    en: "someone's mom"
+    ja: "おかあさん",
+    en: "someone's mom",
   },
   {
-    ja: 'きれい',
-    en: 'beautiful'
+    ja: "きれい",
+    en: "beautiful",
   },
   {
-    ja: 'おとうと',
-    en: "younger brother"
+    ja: "おとうと",
+    en: "younger brother",
   },
   {
-    ja: 'かぞく',
-    en: 'family'
+    ja: "かぞく",
+    en: "family",
   },
   {
-    ja: 'なんにん',
-    en: 'how many people'
+    ja: "なんにん",
+    en: "how many people",
   },
   {
-    ja: 'あに',
-    en: 'older brother'
+    ja: "あに",
+    en: "older brother",
   },
   {
-    ja: 'おにいさん',
-    en: "someone's older brother"
+    ja: "おにいさん",
+    en: "someone's older brother",
   },
   {
-    ja: 'ちち',
-    en: 'father'
+    ja: "ちち",
+    en: "father",
   },
   {
-    ja: 'ぜんぶ',
-    en: 'all'
+    ja: "ぜんぶ",
+    en: "all",
   },
   {
-    ja: 'つま',
-    en: 'wife'
+    ja: "つま",
+    en: "wife",
   },
   {
-    ja: 'おくさん',
-    en: "someone's wife"
+    ja: "おくさん",
+    en: "someone's wife",
   },
   {
-    ja: 'ふたり',
-    en: "two people"
+    ja: "ふたり",
+    en: "two people",
   },
   {
-    ja: 'じゅう',
-    en: "ten"
+    ja: "じゅう",
+    en: "ten",
   },
   {
-    ja: 'ひゃく',
-    en: "hundred"
+    ja: "ひゃく",
+    en: "hundred",
   },
   {
-    ja: 'せん',
-    en: "thousand"
+    ja: "せん",
+    en: "thousand",
   },
   {
-    ja: 'まん',
-    en: "ten thousand"
+    ja: "まん",
+    en: "ten thousand",
   },
   {
-    ja: 'と',
-    en: "and"
+    ja: "と",
+    en: "and",
   },
   {
-    ja: 'だれ',
-    en: "who"
+    ja: "だれ",
+    en: "who",
   },
-  
 ];
