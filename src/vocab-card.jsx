@@ -3,12 +3,13 @@ import "./vocab-card.css";
 import Card from "react-bootstrap/Card";
 import { VocabListContext } from "./vocab-list-context";
 
+const Hint = ({ text }) => <span className="hint">{text}</span>;
+
 export const VocabCard = ({ item }) => {
-  const { isShowJa, setAnswer, updateAnswer, answerMap } =
-    useContext(VocabListContext);
+  const { isShowJa, updateAnswer, answerMap } = useContext(VocabListContext);
+  const [isHintVisible, setIsHintVisible] = useState(false);
 
   const inputRef = useRef(null);
-  const [result, setResult] = useState("light");
   const { ja, en } = item;
 
   const handleKeyPress = (event) => {
@@ -18,9 +19,7 @@ export const VocabCard = ({ item }) => {
 
     event.preventDefault();
     const val = inputRef.current.value;
-
-    if (!val && result) {
-      setResult(null);
+    if (!val) {
       return;
     }
 
@@ -29,6 +28,10 @@ export const VocabCard = ({ item }) => {
       val.toLowerCase().trim() === expected.toLowerCase().trim();
 
     updateAnswer(item.id, isCorrect);
+    if (!isCorrect) {
+      setIsHintVisible(true);
+      setTimeout(() => setIsHintVisible(false), 2000);
+    }
   };
 
   const getBg = () => {
@@ -42,9 +45,14 @@ export const VocabCard = ({ item }) => {
 
   return (
     <Card className="card" bg={getBg()}>
-      <div>{isShowJa ? ja : en}</div>
       <div>
-        <input onKeyPress={handleKeyPress} ref={inputRef} />{" "}
+        <div>
+          <span>{isShowJa ? ja : en}</span>
+          {isHintVisible && <Hint text={isShowJa ? en : ja} />}
+        </div>
+      </div>
+      <div>
+        <input onKeyPress={handleKeyPress} ref={inputRef} />
       </div>
     </Card>
   );

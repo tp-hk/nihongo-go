@@ -7,3 +7,10 @@
   min-width: 400px;
   padding: 10px 5px;
 }
+
+.hint {
+  font-weight: 200;
+  font-size: 12px;
+  margin-left: 8px;
+  color: #fff;
+}

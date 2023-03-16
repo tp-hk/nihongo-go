@@ -3,7 +3,7 @@ import { VocabCard } from "./vocab-card";
 import { Progress } from "./progress";
 import { VocabListContextProvider } from "./vocab-list-context-provider";
 
-const getDivs = (vocabs) =>
+const getCards = (vocabs) =>
   vocabs.map((item) => <VocabCard key={item.id} item={item} />);
 
 export const VocabList = ({ vocabs, isShowJa }) => {
@@ -11,7 +11,7 @@ export const VocabList = ({ vocabs, isShowJa }) => {
     <VocabListContextProvider isShowJa={isShowJa} vocabs={vocabs}>
       <div>
         <Progress />
-        <div className="container">{getDivs(vocabs)}</div>
+        <div className="container">{getCards(vocabs)}</div>
       </div>
     </VocabListContextProvider>
   );

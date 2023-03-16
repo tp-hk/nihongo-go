@@ -16,9 +16,7 @@ const getPercentages = (answerMap, totalCount) => {
     totalCount > 0 ? Math.round((wrongCount / totalCount) * 100) : 0;
 
   return {
-    correctCount,
     correctPercent,
-    wrongCount,
     wrongPercent,
   };
 };
