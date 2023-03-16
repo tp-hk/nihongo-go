@@ -15,13 +15,7 @@ const shuffle = (items) => items.sort(() => 0.5 - Math.random());
 
 export const Container = () => {
   const [langText, setLangText] = useState("EN");
-  const [shuffledVocabs, setVocabs] = useState([]);
-
-  useEffect(() => {
-    const vocabsWithId = addIds(vocabs);
-    const shuffled = shuffle(vocabsWithId);
-    setVocabs(shuffled);
-  }, []);
+  const [shuffledVocabs, setVocabs] = useState(() => shuffle(addIds(vocabs)));
 
   const handleSwitchLanguage = () => {
     setLangText(langText === "EN" ? "JA" : "EN");
@@ -30,7 +24,7 @@ export const Container = () => {
 
   const handleRestart = () => {
     const shuffled = shuffle(shuffledVocabs);
-    // TODO: without recreating, child elements don't update
+    // without recreating, child elements don't update
     setVocabs(JSON.parse(JSON.stringify(shuffled)));
   };
 

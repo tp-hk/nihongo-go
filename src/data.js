@@ -1,6 +1,5 @@
-// TODO: expand to hiragana & katakana
+// TODO: expand to hiragana, katakana, kanji
 // TODO: expand to accept multiple answers
-// TODO: add id
 export const vocabs = [
   // sec 1
   {
@@ -99,11 +98,11 @@ export const vocabs = [
   },
   {
     ja: "はは",
-    en: "mom",
+    en: "mother",
   },
   {
     ja: "おかあさん",
-    en: "someone's mom",
+    en: "someone's mother",
   },
   {
     ja: "きれい",

@@ -26,21 +26,24 @@ const getPercentages = (answerMap, totalCount) => {
 export const Progress = () => {
   const { totalCount, answerMap } = useContext(VocabListContext);
 
-  const { correctCount, wrongCount } = getPercentages(answerMap, totalCount);
+  const { correctPercent, wrongPercent } = getPercentages(
+    answerMap,
+    totalCount
+  );
 
   return (
     <div>
       <ProgressBar>
         <ProgressBar
           variant="success"
-          now={correctCount}
-          label={`${correctCount}`}
+          now={correctPercent}
+          label={`${correctPercent}%`}
           key={1}
         />
         <ProgressBar
           variant="danger"
-          now={wrongCount}
-          label={`${wrongCount}`}
+          now={wrongPercent}
+          label={`${wrongPercent}%`}
           key={2}
         />
       </ProgressBar>
