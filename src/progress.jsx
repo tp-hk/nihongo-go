@@ -1,26 +1,47 @@
 import ProgressBar from "react-bootstrap/ProgressBar";
+import { useContext } from "react";
+import { VocabListContext } from "./vocab-list-context";
 
-export const Progress = (props) => {
-  const { correctCount, wrongCount } = props;
-  const total = correctCount + wrongCount;
+const getPercentages = (answerMap, totalCount) => {
+  const correctCount = [...answerMap.values()].filter(
+    (isCorrect) => isCorrect
+  ).length;
+
+  const wrongCount = answerMap.size - correctCount;
+
   const correctPercent =
-    total > 0 ? Math.round((correctCount / total) * 100) : 0;
-  const wrongPercent = 100 - correctPercent;
+    totalCount > 0 ? Math.round((correctCount / totalCount) * 100) : 0;
+
+  const wrongPercent =
+    totalCount > 0 ? Math.round((wrongCount / totalCount) * 100) : 0;
+
+  return {
+    correctCount,
+    correctPercent,
+    wrongCount,
+    wrongPercent,
+  };
+};
+
+export const Progress = () => {
+  const { totalCount, answerMap } = useContext(VocabListContext);
+
+  const { correctCount, wrongCount } = getPercentages(answerMap, totalCount);
 
   return (
     <div>
       <ProgressBar>
         <ProgressBar
           variant="success"
-          now={correctPercent}
-          label={`${correctPercent}%`}
+          now={correctCount}
+          label={`${correctCount}`}
           key={1}
         />
         <ProgressBar
           variant="danger"
-          now={wrongPercent}
-          label={`${wrongPercent}%`}
-          key={3}
+          now={wrongCount}
+          label={`${wrongCount}`}
+          key={2}
         />
       </ProgressBar>
     </div>

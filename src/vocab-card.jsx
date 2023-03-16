@@ -4,7 +4,8 @@ import Card from "react-bootstrap/Card";
 import { VocabListContext } from "./vocab-list-context";
 
 export const VocabCard = ({ item }) => {
-  const { isShowJa, setAnswer } = useContext(VocabListContext);
+  const { isShowJa, setAnswer, updateAnswer, answerMap } =
+    useContext(VocabListContext);
 
   const inputRef = useRef(null);
   const [result, setResult] = useState("light");
@@ -26,13 +27,21 @@ export const VocabCard = ({ item }) => {
     const expected = isShowJa ? en : ja;
     const isCorrect =
       val.toLowerCase().trim() === expected.toLowerCase().trim();
-    setResult(isCorrect ? "success" : "danger");
 
-    setAnswer(isCorrect);
+    updateAnswer(item.id, isCorrect);
+  };
+
+  const getBg = () => {
+    const isCorrect = answerMap.get(item.id);
+    if (isCorrect === undefined) {
+      return null;
+    }
+
+    return isCorrect ? "success" : "danger";
   };
 
   return (
-    <Card className="card" bg={result}>
+    <Card className="card" bg={getBg()}>
       <div>{isShowJa ? ja : en}</div>
       <div>
         <input onKeyPress={handleKeyPress} ref={inputRef} />{" "}

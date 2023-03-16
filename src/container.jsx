@@ -5,6 +5,12 @@ import Button from "react-bootstrap/Button";
 import { vocabs } from "./data";
 import "./container.css";
 
+const addIds = (items) =>
+  items.map((item, index) => {
+    item.id = index;
+    return item;
+  });
+
 const shuffle = (items) => items.sort(() => 0.5 - Math.random());
 
 export const Container = () => {
@@ -12,7 +18,8 @@ export const Container = () => {
   const [shuffledVocabs, setVocabs] = useState([]);
 
   useEffect(() => {
-    const shuffled = shuffle(vocabs);
+    const vocabsWithId = addIds(vocabs);
+    const shuffled = shuffle(vocabsWithId);
     setVocabs(shuffled);
   }, []);
 

@@ -1,40 +1,49 @@
 import "./vocab-list.css";
 import { VocabCard } from "./vocab-card";
 import { Progress } from "./progress";
-import { useCallback, useState } from "react";
+import { useMemo, useCallback, useState, useRef } from "react";
 import { VocabListContext } from "./vocab-list-context";
 
 const getDivs = (vocabs) => {
   return vocabs.map((item) => {
-    return <VocabCard key={`${item.en}${new Date().getTime()}`} item={item} />;
+    return <VocabCard key={item.id} item={item} />;
   });
 };
 
 export const VocabList = ({ vocabs, isShowJa }) => {
-  const [correctAnswerCount, setCorrectAnswerCount] = useState(0);
+  // const [correctCount, setCorrectCount] = useState(0);
+  const [answeredCount, setAnsweredCount] = useState(0);
+  const totalCount = vocabs.length;
+  const answerMap = useRef(new Map());
 
-  const setAnswer = (isCorrect) => {
-    let correct = correctAnswerCount + (isCorrect ? 1 : -1);
-    if (correct < 0) {
-      correct = 0;
+  const updateAnswer = useCallback((vocabId, isCorrect) => {
+    const map = answerMap.current;
+    if (!map) {
+      return;
     }
-    setCorrectAnswerCount(correct);
-  };
+
+    map.set(vocabId, isCorrect);
+    // const correctCount = [...map.values()].filter(
+    //   (isCorrect) => isCorrect
+    // ).length;
+    // setCorrectCount(correctCount);
+    setAnsweredCount(map.size);
+  }, []);
+
+  const memoValue = useMemo(
+    () => ({
+      isShowJa,
+      updateAnswer,
+      answerMap: answerMap.current,
+    }),
+    [answeredCount, answerMap]
+  );
 
   return (
-    <VocabListContext.Provider
-      value={{
-        vocabs,
-        isShowJa,
-        setAnswer,
-      }}
-    >
+    <VocabListContext.Provider value={memoValue}>
       <div>
-        <Progress
-          correctCount={correctAnswerCount}
-          wrongCount={vocabs.length - correctAnswerCount}
-        />
-        <div className="container">{getDivs(vocabs, isShowJa)}</div>
+        <Progress />
+        <div className="container">{getDivs(vocabs)}</div>
       </div>
     </VocabListContext.Provider>
   );
