@@ -1,10 +1,17 @@
-import { useMemo, useCallback, useState, useRef } from "react";
+import { useMemo, useCallback, useState, useRef, useEffect } from "react";
 import { VocabListContext } from "./vocab-list-context";
 
-export const VocabListContextProvider = ({ children, isShowJa, vocabs }) => {
+export const VocabListContextProvider = ({
+  children,
+  isShowJa,
+  vocabs,
+  answerMap,
+}) => {
   const [answerCount, setAnsweredCount] = useState(0);
   const [correctCount, setCorrectCount] = useState(0);
-  const answerMap = useRef(new Map());
+  // const answerMap = useRef(new Map());
+  const isShowJaRef = useRef(isShowJa);
+  const vocabsRef = useRef(vocabs);
 
   const updateAnswer = useCallback((vocabId, isCorrect) => {
     const map = answerMap.current;
@@ -22,15 +29,22 @@ export const VocabListContextProvider = ({ children, isShowJa, vocabs }) => {
     setAnsweredCount(map.size);
   }, []);
 
-  const value = useMemo(
-    () => ({
-      isShowJa,
-      updateAnswer,
-      answerMap: answerMap.current,
-      totalCount: vocabs.length,
-    }),
-    [answerCount, correctCount]
-  );
+  const value = {
+    vocabs,
+    isShowJa,
+    updateAnswer,
+    answerMap: answerMap.current,
+  };
+
+  // const value = useMemo(
+  //   () => ({
+  //     vocabs,
+  //     isShowJa,
+  //     updateAnswer,
+  //     answerMap: answerMap.current,
+  //   }),
+  //   [answerCount, correctCount]
+  // );
 
   return (
     <VocabListContext.Provider value={value}>

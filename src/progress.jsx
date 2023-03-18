@@ -1,5 +1,5 @@
 import ProgressBar from "react-bootstrap/ProgressBar";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { VocabListContext } from "./vocab-list-context";
 
 const getPercentages = (answerMap, totalCount) => {
@@ -22,11 +22,11 @@ const getPercentages = (answerMap, totalCount) => {
 };
 
 export const Progress = () => {
-  const { totalCount, answerMap } = useContext(VocabListContext);
+  const { vocabs, answerMap } = useContext(VocabListContext);
 
   const { correctPercent, wrongPercent } = getPercentages(
     answerMap,
-    totalCount
+    vocabs.length
   );
 
   return (

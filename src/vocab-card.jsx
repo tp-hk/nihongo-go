@@ -18,29 +18,24 @@ export const VocabCard = ({ item }) => {
     }
 
     event.preventDefault();
-    const val = inputRef.current.value;
-    if (!val) {
+    if (!inputRef.current) {
       return;
     }
 
     const expected = isShowJa ? en : ja;
     const isCorrect =
-      val.toLowerCase().trim() === expected.toLowerCase().trim();
+      inputRef.current.toLowerCase().trim() === expected.toLowerCase().trim();
 
     updateAnswer(item.id, isCorrect);
     if (!isCorrect) {
       setIsHintVisible(true);
-      setTimeout(() => setIsHintVisible(false), 2000);
+      setTimeout(() => setIsHintVisible(false), 1000);
     }
   };
 
   const getBg = () => {
     const isCorrect = answerMap.get(item.id);
-    if (isCorrect === undefined) {
-      return null;
-    }
-
-    return isCorrect ? "success" : "danger";
+    return isCorrect === undefined ? null : isCorrect ? "success" : "danger";
   };
 
   return (
@@ -52,7 +47,11 @@ export const VocabCard = ({ item }) => {
         </div>
       </div>
       <div>
-        <input onKeyPress={handleKeyPress} ref={inputRef} />
+        <input
+          ref={inputRef}
+          onKeyPress={handleKeyPress}
+          onChange={(e) => (inputRef.current = e.target.value)}
+        />
       </div>
     </Card>
   );
