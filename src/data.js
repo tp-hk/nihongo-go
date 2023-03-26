@@ -172,4 +172,9 @@ export const vocabs = [
     ja: "だれ",
     en: "who",
   },
+  // sec 3
+  {
+    ja: "かいがい",
+    en: "overseas",
+  },
 ];
