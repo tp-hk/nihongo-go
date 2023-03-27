@@ -1,2 +1,3 @@
 # nihongo-go
-Created with CodeSandbox
+
+Flashcards of JLPT vocabs created based on Udemy JLPT course
