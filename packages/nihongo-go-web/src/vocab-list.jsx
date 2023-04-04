@@ -22,45 +22,39 @@ const getCards = (vocabs) => {
   ));
 };
 
-const languageMap = [
-  {
-    next: "JA",
-    curr: "EN",
-  },
-  {
-    next: "EN",
-    curr: "JA",
-  },
-  {
-    next: "KA",
-    curr: "JA",
-  },
-];
-
 const vocabSource = addIds(vocabs);
 
 export const VocabList = () => {
-  const [nextLang, setNextLang] = useState("EN");
+  const languages = ["EN", "JA", "KA"];
+  const [selectedLang, setSelectedLang] = useState(languages[0]);
+  const [nextLang, setNextLang] = useState(languages[1]);
   const [shuffledVocabs, setVocabs] = useState(() => shuffle(vocabSource));
   const answerMap = useRef(new Map());
 
-  const handleSwitchLanguage = () => {
-    let next = "EN";
-    if (nextLang === "EN") {
-      next = "JA";
-    } else if (nextLang === "JA") {
-      next = "KA";
-    } else {
-      next = "EN";
+  const getNextLanguage = (lang) => {
+    const index = languages.indexOf(lang);
+    if (index === languages.length - 1) {
+      return languages[0];
     }
-    setNextLang(next);
-    handleRestart();
+    return languages[index + 1];
   };
 
-  const handleRestart = () => {
-    let shuffled = shuffle(shuffledVocabs);
-    if (nextLang === "KA") {
-      shuffled = vocabSource.filter((vocab) => !!vocab.ka);
+  const handleSwitchLanguage = () => {
+    const next = getNextLanguage(nextLang);
+    const selected = getNextLanguage(selectedLang);
+
+    // console.log(`nextLang: ${next}; selectedLang ${selected}`);
+
+    handleRestart(selected);
+
+    setNextLang(next);
+    setSelectedLang(selected);
+  };
+
+  const handleRestart = (selected) => {
+    let shuffled = shuffle(vocabSource);
+    if (selected === "KA") {
+      shuffled = shuffle(vocabSource.filter((vocab) => !!vocab.ka));
     }
     // without recreating, child elements don't update
     setVocabs(JSON.parse(JSON.stringify(shuffled)));
@@ -76,7 +70,7 @@ export const VocabList = () => {
       <VocabListContextProvider
         vocabs={shuffledVocabs}
         answerMap={answerMap}
-        selectedLanguage={nextLang}
+        selectedLanguage={selectedLang}
       >
         <Progress />
         <div className="container">{getCards(shuffledVocabs)}</div>
