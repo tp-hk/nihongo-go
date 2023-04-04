@@ -6,11 +6,23 @@ import { VocabListContext } from "./vocab-list-context";
 const Hint = ({ text }) => <span className="hint">{text}</span>;
 
 export const VocabCard = ({ item }) => {
-  const { isShowJa, updateAnswer, answerMap } = useContext(VocabListContext);
+  const { selectedLanguage, updateAnswer, answerMap } =
+    useContext(VocabListContext);
   const [isHintVisible, setIsHintVisible] = useState(false);
 
   const inputRef = useRef(null);
-  const { ja, en } = item;
+  const { ja, en, ka } = item;
+
+  const getExpected = () => {
+    /**
+     * if lang = ja, hint = en
+     * if lang = en, hint = ja
+     * if lang = ka, hint = ja
+     */
+
+    const expected = selectedLanguage === "JA" ? en : ja;
+    return expected;
+  };
 
   const handleKeyPress = (event) => {
     if (event.key !== "Enter") {
@@ -22,7 +34,7 @@ export const VocabCard = ({ item }) => {
       return;
     }
 
-    const expected = isShowJa ? en : ja;
+    const expected = getExpected();
     const isCorrect =
       inputRef.current.toLowerCase().trim() === expected.toLowerCase().trim();
 
@@ -42,8 +54,14 @@ export const VocabCard = ({ item }) => {
     <Card className="card" bg={getBg()}>
       <div>
         <div>
-          <span>{isShowJa ? ja : en}</span>
-          {isHintVisible && <Hint text={isShowJa ? en : ja} />}
+          <span>
+            {selectedLanguage === "EN"
+              ? en
+              : selectedLanguage === "JA"
+              ? ja
+              : ka}
+          </span>
+          {isHintVisible && <Hint text={getExpected()} />}
         </div>
       </div>
       <div>

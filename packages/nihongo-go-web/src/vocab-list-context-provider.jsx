@@ -1,18 +1,12 @@
-import { useMemo, useCallback, useState, useRef, useEffect } from "react";
+import { useCallback, useState } from "react";
 import { VocabListContext } from "./vocab-list-context";
 
 export const VocabListContextProvider = ({
   children,
-  isShowJa,
   vocabs,
   answerMap,
+  selectedLanguage,
 }) => {
-  const [answerCount, setAnsweredCount] = useState(0);
-  const [correctCount, setCorrectCount] = useState(0);
-  // const answerMap = useRef(new Map());
-  const isShowJaRef = useRef(isShowJa);
-  const vocabsRef = useRef(vocabs);
-
   const updateAnswer = useCallback((vocabId, isCorrect) => {
     const map = answerMap.current;
     if (!map) {
@@ -21,33 +15,18 @@ export const VocabListContextProvider = ({
 
     map.set(vocabId, isCorrect);
 
-    // Needed just to trigger re-render. To-be-investigated
-    const isCorrectCount = [...map.values()].filter(
-      (isCorrect) => isCorrect
-    ).length;
-    setCorrectCount(isCorrectCount);
-    setAnsweredCount(map.size);
+    setContext(context);
   }, []);
 
-  const value = {
+  const [context, setContext] = useState({
     vocabs,
-    isShowJa,
     updateAnswer,
     answerMap: answerMap.current,
-  };
-
-  // const value = useMemo(
-  //   () => ({
-  //     vocabs,
-  //     isShowJa,
-  //     updateAnswer,
-  //     answerMap: answerMap.current,
-  //   }),
-  //   [answerCount, correctCount]
-  // );
+    selectedLanguage,
+  });
 
   return (
-    <VocabListContext.Provider value={value}>
+    <VocabListContext.Provider value={context}>
       {children}
     </VocabListContext.Provider>
   );

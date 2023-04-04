@@ -1,9 +1,9 @@
-// TODO: expand to hiragana, katakana, kanji
 export const vocabs = [
   // sec 1
   {
     ja: "わたし",
     en: "I",
+    ka: "私",
   },
   {
     ja: "あなた",
@@ -16,14 +16,17 @@ export const vocabs = [
   {
     ja: "にほん",
     en: "Japan",
+    ka: "日本",
   },
   {
     ja: "ちゅうごく",
     en: "China",
+    ka: "中国",
   },
   {
     ja: "かんこく",
     en: "Korea",
+    ka: "韓国",
   },
   {
     ja: "アメリカ",
@@ -40,30 +43,37 @@ export const vocabs = [
   {
     ja: "だいがく",
     en: "university",
+    ka: "大学",
   },
   {
     ja: "こうこう",
     en: "high school",
+    ka: "高校",
   },
   {
     ja: "がっこう",
     en: "school",
+    ka: "学校",
   },
   {
     ja: "せんせい",
     en: "teacher",
+    ka: "先生",
   },
   {
     ja: "がくせい",
     en: "student",
+    ka: "学生",
   },
   {
     ja: "なまえ",
     en: "name",
+    ka: "名前",
   },
   {
     ja: "あのかた",
     en: "that person",
+    ka: "あの方",
   },
   {
     ja: "から",
@@ -72,10 +82,12 @@ export const vocabs = [
   {
     ja: "くる",
     en: "come",
+    ka: "来る",
   },
   {
     ja: "いく",
     en: "go",
+    ka: "行く",
   },
   {
     ja: "どなた",
@@ -84,10 +96,12 @@ export const vocabs = [
   {
     ja: "ともだち",
     en: "friend",
+    ka: "友達",
   },
   {
     ja: "いしゃ",
     en: "doctor",
+    ka: "医者",
   },
   {
     ja: "エンジニア",
@@ -96,6 +110,7 @@ export const vocabs = [
   {
     ja: "かいしゃいん",
     en: "employee",
+    ka: "会社員",
   },
   {
     ja: "サラリーマン",
@@ -104,22 +119,27 @@ export const vocabs = [
   {
     ja: "おいしい",
     en: "delicious",
+    ka: "美味しい",
   },
   {
     ja: "おおきい",
     en: "big",
+    ka: "大きい",
   },
   {
     ja: "くに",
     en: "country",
+    ka: "国",
   },
   {
     ja: "ご",
     en: "language",
+    ka: "語",
   },
   {
     ja: "じん",
     en: "citizen",
+    ka: "人",
   },
   {
     ja: "コーヒー",
@@ -128,10 +148,12 @@ export const vocabs = [
   {
     ja: "あつい",
     en: "hot",
+    ka: "熱い",
   },
   {
     ja: "さむい",
     en: "cold",
+    ka: "寒い",
   },
   {
     ja: "の",
@@ -140,26 +162,32 @@ export const vocabs = [
   {
     ja: "ほん",
     en: "book",
+    ka: "本",
   },
   {
     ja: "くるま",
     en: "car",
+    ka: "車",
   },
   {
     ja: "やまだ",
     en: "yamada",
+    ka: "山田",
   },
   {
     ja: "さとう",
-    en: "sato",
+    en: "Sato",
+    ka: "佐藤",
   },
   {
     ja: "すずき",
-    en: "suzuki",
+    en: "Suzuki",
+    ka: "鈴木",
   },
   {
     ja: "きょうしつ",
     en: "classroom",
+    ka: "教室",
   },
   // sec 2
   {
